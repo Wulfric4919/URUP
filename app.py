@@ -19,7 +19,7 @@ def root_text():
 @app.route("/banne.png", methods=['GET'])
 def get_banner():
     "Returns random banner"
-    banners = glob("./static/banners/*.png")
+    banners = glob("./static/banners/*.gif")
     banner = choice(banners)
     return redirect(url_for(os.path.basename(banner)))
 
@@ -45,7 +45,7 @@ class StaticBanner(View):
 for banner in glob("./static/banners/*.png"):
     app.add_url_rule(
         f"/{os.path.basename(banner)}",
-        view_func=StaticBanner.as_view(os.path.basename(banner), banner, "image/png")
+        view_func=StaticBanner.as_view(os.path.basename(banner), banner, "image/gif")
         )
 
 # responce headers
