@@ -36,7 +36,7 @@ class StaticBanner(View):
         resp.headers['Cache-Control'] = "max-age=604800"
         return resp
 
-for banner in glob("./static/banners/*.png"):
+for banner in glob("./static/banners/*.gif"):
     app.add_url_rule(
         f"/{os.path.basename(banner)}",
         view_func=StaticBanner.as_view(os.path.basename(banner), banner, "image/gif")
